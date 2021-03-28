@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { filter } from 'rxjs/operators';
+import {filter, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-speaker-edit',
@@ -10,15 +10,10 @@ import { filter } from 'rxjs/operators';
 export class SpeakerEditComponent implements OnInit {
   speakerId: number;
 
-  constructor(private route: ActivatedRoute) {
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.queryParams.pipe(
-      filter(params => params.id != null)
-    ).subscribe(params => {
-      this.speakerId = +params.id;
-    });
+    this.speakerId = +this.route.snapshot.paramMap.get('id');
   }
 
 }

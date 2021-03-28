@@ -8,7 +8,6 @@ import {SpeakerListComponent} from "./pages/speaker-list/speaker-list.component"
 
 const routes: Routes = [
   { path: 'homepage', component: HomepageComponent },
-  { path: 'speaker', redirectTo: 'speaker/list' },
   { path: 'speaker/list', component: SpeakerListComponent },
   { path: 'speaker/create', component: SpeakerCreateComponent },
   { path: 'speaker/edit/:id', component: SpeakerEditComponent },
