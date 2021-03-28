@@ -8,6 +8,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SpeakerComponent } from './pages/speaker/speaker.component';
 import { SpeakerEditComponent } from './pages/speaker-edit/speaker-edit.component';
 import { SpeakerCreateComponent } from './pages/speaker-create/speaker-create.component';
+import { ErrorpageComponent } from './pages/errorpage/errorpage.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SpeakerCreateComponent } from './pages/speaker-create/speaker-create.co
     HomepageComponent,
     SpeakerComponent,
     SpeakerEditComponent,
-    SpeakerCreateComponent
+    SpeakerCreateComponent,
+    ErrorpageComponent
   ],
   imports: [
     BrowserModule,
