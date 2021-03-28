@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-speaker-edit',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./speaker-edit.component.scss']
 })
 export class SpeakerEditComponent implements OnInit {
+  speakerId: number;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    this.route.queryParams.pipe(
+      filter(params => params.id != null)
+    ).subscribe(params => {
+      this.speakerId = +params.id;
+    });
   }
 
 }
