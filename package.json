@@ -17,7 +17,7 @@
   },
   "husky": {
     "hooks": {
-	  "pre-commit": "echo husky is awsome test",
+      "pre-commit": "echo husky is awsome test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -32,10 +32,7 @@
     "@angular/platform-browser": "~10.2.4",
     "@angular/platform-browser-dynamic": "~10.2.4",
     "@angular/router": "~10.2.4",
-    "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
     "firebase": "^7.0 || ^8.0",
-    "husky": "^6.0.0",
     "rxjs": "~6.6.6",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -46,12 +43,14 @@
     "@angular/cli": "~10.2.3",
     "@angular/compiler-cli": "~10.2.4",
     "@angular/language-service": "~10.2.4",
+    "@commitlint/cli": "^12.1.1",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "firebase-tools": "^9.8.0",
     "fuzzy": "^0.1.3",
+    "husky": "^6.0.0",
     "inquirer": "^6.2.2",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.5.0",
