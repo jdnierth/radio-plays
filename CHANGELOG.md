@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/jdnierth/radio-plays/compare/v0.0.3...v0.0.4) (2021-04-03)
+
+
+### Bug Fixes
+
+* switching from auto-changlog to standard-version ([eb32a67](https://github.com/jdnierth/radio-plays/commits/eb32a6789c95e6dad61924affa8dea5ff50c394f))
+
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 ### Changelog
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
