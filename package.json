@@ -17,6 +17,7 @@
   },
   "husky": {
     "hooks": {
+	  "pre-commit": "echo husky is awsome",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
