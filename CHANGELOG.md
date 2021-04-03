@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/jdnierth/radio-plays/compare/v0.0.4...v0.0.5) (2021-04-03)
+
+
+### Bug Fixes
+
+* commitlint ([6421473](https://github.com/jdnierth/radio-plays/commits/6421473641d1f49bcbc54f8965e700aa4fa8d1d0))
+
 ### [0.0.4](https://github.com/jdnierth/radio-plays/compare/v0.0.3...v0.0.4) (2021-04-03)
 
 
