@@ -1,13 +1,15 @@
 {
   "name": "radio-plays",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prebuild": "npm --no-git-tag-version version patch",
+    "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,7 @@
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "auto-changelog": "^2.2.1",
     "codelyzer": "^5.1.2",
     "firebase-tools": "^9.8.0",
     "fuzzy": "^0.1.3",
