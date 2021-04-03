@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/jdnierth/radio-plays/compare/v0.0.7...v0.0.8) (2021-04-03)
+
+
+### Features
+
+* [#1](https://github.com/jdnierth/radio-plays/issues/1) testing changelog ([61c818e](https://github.com/jdnierth/radio-plays/commits/61c818e5de5f74eec6658a1540307b2d3167fe0c))
+
 ### [0.0.7](https://github.com/jdnierth/radio-plays/compare/v0.0.6...v0.0.7) (2021-04-03)
 
 ### [0.0.6](https://github.com/jdnierth/radio-plays/compare/v0.0.5...v0.0.6) (2021-04-03)
