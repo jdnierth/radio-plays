@@ -1,4 +1,4 @@
-import {Speaker} from "./speaker.model";
+import { Speaker } from "./speaker.model";
 
 export const speakerFixture: Speaker[] = [
   {

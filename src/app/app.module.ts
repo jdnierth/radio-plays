@@ -15,6 +15,7 @@ import { SpeakerCreateComponent } from './pages/speaker-create/speaker-create.co
 import { SpeakerListComponent } from './pages/speaker-list/speaker-list.component';
 
 import { environment } from "../environments/environment";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { environment } from "../environments/environment";
     ErrorpageComponent,
     SpeakerEditComponent,
     SpeakerCreateComponent,
-    SpeakerListComponent
+    SpeakerListComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
