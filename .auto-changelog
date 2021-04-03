@@ -1,8 +1,0 @@
-{
-  "output": "HISTORY.md",
-  "template": "keepachangelog",
-  "unreleased": true,
-  "commitLimit": false,
-  "issueUrl": "https://github.com/jdnierth/radio-plays/issues/{id}",
-  "issuePattern": "[A-Z]+ #\d+"
-}

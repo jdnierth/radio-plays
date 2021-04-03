@@ -1,6 +1,6 @@
 {
   "name": "radio-plays",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,8 +8,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "release:patch": "npm version patch -m \"Upgrade to %s version\"",
-    "version": "auto-changelog -p && git add CHANGELOG.md"
+    "prepare": "husky install",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "private": true,
   "dependencies": {
@@ -22,10 +25,10 @@
     "@angular/platform-browser": "~10.2.4",
     "@angular/platform-browser-dynamic": "~10.2.4",
     "@angular/router": "~10.2.4",
+    "firebase": "^7.0 || ^8.0",
     "rxjs": "~6.6.6",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
-    "firebase": "^7.0 || ^8.0"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/architect": ">= 0.900 < 0.1200",
@@ -33,13 +36,15 @@
     "@angular/cli": "~10.2.3",
     "@angular/compiler-cli": "~10.2.4",
     "@angular/language-service": "~10.2.4",
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
-    "auto-changelog": "^2.2.1",
     "codelyzer": "^5.1.2",
     "firebase-tools": "^9.8.0",
     "fuzzy": "^0.1.3",
+    "husky": "^3.1.0",
     "inquirer": "^6.2.2",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.5.0",
@@ -51,6 +56,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "open": "^7.0.3",
     "protractor": "~7.0.0",
+    "standard-version": "^9.1.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.7"
