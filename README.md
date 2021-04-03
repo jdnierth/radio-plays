@@ -1,9 +1,17 @@
 # RadioPlays
 Sandbox application to create radio plays. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.
 
-# Node and npm version
-* node v12.8.1
-* npm v6.10.2
+# Setup
+## Node and npm version
+* node v12.16.3
+* npm v6.14.4
+
+## Husky on Windows
+* If a clean setup is being done and node_modules have to be setup run the following command once
+``
+npm run prepare
+``
+* make sure that the `.git/config > hooksPath` points to `.git/hooks` 
 
 ## Development server
 
