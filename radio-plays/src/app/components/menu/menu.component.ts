@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SpeakerService } from "../../services/speaker.service";
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private speakerService: SpeakerService) { }
 
   ngOnInit(): void {
+  }
+
+  addSpeaker(e) {
+    e.preventDefault();
+
+    this.speakerService.setSpeakers();
   }
 
 }

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "radio-plays": {
+      "hosting": {
+        "radio-plays": [
+          "radio-plays"
+        ]
+      }
+    }
+  }
+}
