@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/jdnierth/radio-plays/compare/v0.0.9...v0.0.10) (2021-04-03)
+
+
+### Features
+
+* **footer:** footer added ([8e5a52d](https://github.com/jdnierth/radio-plays/commits/8e5a52d5b3fb99e7c195a4963580e8bb8e0ada30))
+
 ### [0.0.9](https://github.com/jdnierth/radio-plays/compare/v0.0.8...v0.0.9) (2021-04-03)
 
 
