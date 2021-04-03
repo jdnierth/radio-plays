@@ -1,4 +1,5 @@
 #!/bin/sh
+echo 'hello husky.sh'
 if [ -z "$husky_skip_init" ]; then
   debug () {
     [ "$HUSKY_DEBUG" = "1" ] && echo "husky (debug) - $1"
