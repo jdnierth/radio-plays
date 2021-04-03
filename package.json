@@ -7,9 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "release:patch": "npm version patch -m \"Upgrade to %s version\"",
-    "version": "auto-changelog -p && git add CHANGELOG.md"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -36,7 +34,6 @@
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
-    "auto-changelog": "^2.2.1",
     "codelyzer": "^5.1.2",
     "firebase-tools": "^9.8.0",
     "fuzzy": "^0.1.3",
