@@ -1,0 +1,15 @@
+footer {
+  $padding: 10px;
+
+  background-color: #000;
+  bottom: 0;
+  color: #fff;
+  padding: 2px $padding;
+  position: fixed;
+  width: calc(100% - 2* #{$padding});
+
+
+  p.copy {
+    float: right;
+  }
+}
