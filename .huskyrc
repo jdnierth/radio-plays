@@ -1,3 +1,10 @@
-"hooks": {
-  "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+"dependencies": {
+  "@commitlint/cli": "latest",
+  "@commitlint/config-conventional": "latest",
+  "husky": "latest"
+},
+"husky": {
+  "hooks": {
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+  }
 }
