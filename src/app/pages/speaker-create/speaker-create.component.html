@@ -1,1 +1,36 @@
-<p>speaker-create works!</p>
+<form [formGroup]="createSpeakerForm" (ngSubmit)="submitForm()">
+<h1>Create a speaker</h1>
+
+  <div>
+  <label>
+    Firstname:
+    <input formControlName="firstname" type="text">
+  </label>
+    <span *ngIf="firstname.invalid && firstname.touched && getError('firstname') as error"
+      class="errorText">{{ error }}
+    </span>
+  </div>
+
+  <div>
+  <label>
+    Lastname:
+    <input formControlName="lastname" type="text">
+    <span *ngIf="lastname.invalid && lastname.touched && getError('lastname') as error"
+      class="errorText">{{ error }}
+    </span>
+  </label>
+  </div>
+
+  <div formArrayName="aliases">
+    <div *ngFor="let alias of aliases.controls; let i=index">
+      <label>Alias {{ i }}:
+        <input [formControlName]="i" type="text">
+        <span *ngIf="alias.invalid && alias.touched">Alias is not valid</span>
+      </label>
+    </div>
+  </div>
+
+  <button type="button"
+  (click)="addAliasControls()">Add alias</button>
+  <button [disabled]="!createSpeakerForm.valid" type="submit">Save</button>
+</form>

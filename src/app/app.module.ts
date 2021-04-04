@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -16,6 +17,7 @@ import { SpeakerListComponent } from './pages/speaker-list/speaker-list.componen
 
 import { environment } from "../environments/environment";
 import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
