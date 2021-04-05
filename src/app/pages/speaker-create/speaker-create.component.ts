@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
+import {FormsService} from "../../services/forms.service";
 
 @Component({
   selector: 'app-speaker-create',
@@ -10,7 +11,7 @@ export class SpeakerCreateComponent implements OnInit {
 
   createSpeakerForm: FormGroup;
 
-  constructor() { }
+  constructor(private formsService: FormsService) { }
 
   get firstname() {
     return this.createSpeakerForm.get('firstname') as FormControl;
@@ -30,8 +31,8 @@ export class SpeakerCreateComponent implements OnInit {
 
   createForm() {
     this.createSpeakerForm = new FormGroup({
-      "firstname": new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      "lastname": new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      "firstname": new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(3)]),
+      "lastname": new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(3)]),
       "aliases": new FormArray([])
     })
   }
@@ -43,29 +44,10 @@ export class SpeakerCreateComponent implements OnInit {
   }
 
   // Add a function to extract the error message for each control
-  getError(formControlName: string): any {
-    let message = '';
-    const fieldLabel = formControlName.charAt(0).toUpperCase() + formControlName.slice(1);
-    //Object.keys(this.createSpeakerForm.controls).forEach(formControlName => {
-      const controlErrors: ValidationErrors = this.createSpeakerForm.get(formControlName).errors;
-      if (controlErrors != null) {
-        Object.keys(controlErrors).forEach(keyError => {
-          switch(keyError){
-            case 'minlength':
-
-              message = fieldLabel + ' has to have at least ' + controlErrors[keyError].requiredLength + ' characters';
-              console.log('msg: ', message);
-              break;
-            default:
-              message = fieldLabel + ' is required';
-          }
-          console.log('Key control: ' + formControlName + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
-
-        });
-      }
-    //});
-    return message;
+  getErrorMsg(formControlName: string): any {
+    return this.formsService.getErrorMsg(this.createSpeakerForm, formControlName);
   }
+
 
   submitForm() {
     if(this.createSpeakerForm.valid) {
