@@ -6,8 +6,8 @@
     Firstname:
     <input formControlName="firstname" type="text">
   </label>
-    <span *ngIf="firstname.invalid && firstname.touched && getErrorMsg('firstname') as error"
-      class="errorText">{{ error }}
+    <span *ngIf="firstname.invalid && firstname.touched && getErrorMsgFromControl('firstname', firstname) as errorMsg"
+      class="errorText">{{ errorMsg }}
     </span>
   </div>
 
@@ -15,8 +15,8 @@
   <label>
     Lastname:
     <input formControlName="lastname" type="text">
-    <span *ngIf="lastname.invalid && lastname.touched && getErrorMsg('lastname') as error"
-      class="errorText">{{ error }}
+    <span *ngIf="lastname.invalid && lastname.touched && getErrorMsgFromControl('lastname', lastname) as errorMsg"
+      class="errorText">{{ errorMsg }}
     </span>
   </label>
   </div>
@@ -25,8 +25,8 @@
     <div *ngFor="let alias of aliases.controls; let i=index">
       <label>Alias {{ i }}:
         <input [formControlName]="i" type="text">
-        <span *ngIf="alias.invalid && alias.touched && getErrorMsg('alias') as error"
-          class="errorText">{{ error }}
+        <span *ngIf="alias.invalid && alias.touched && getErrorMsgFromControl('alias', alias) as errorMsg"
+          class="errorText">{{ errorMsg }}
         </span>
       </label>
     </div>

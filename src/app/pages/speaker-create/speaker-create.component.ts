@@ -38,16 +38,14 @@ export class SpeakerCreateComponent implements OnInit {
   }
 
   addAliasControls() {
-    const formControl = new FormControl(null, [Validators.required]);
+    const formControl = new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]);
 
     (<FormArray>this.aliases).push(formControl);
   }
 
-  // Add a function to extract the error message for each control
-  getErrorMsg(formControlName: string): any {
-    return this.formsService.getErrorMsg(this.createSpeakerForm, formControlName);
+  getErrorMsgFromControl(formControlLabel: string, formControl: FormControl): string {
+    return this.formsService.getErrorMsgFromControl(formControlLabel, formControl);
   }
-
 
   submitForm() {
     if(this.createSpeakerForm.valid) {
