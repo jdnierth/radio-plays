@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/jdnierth/radio-plays/compare/v0.0.10...v0.0.11) (2021-04-05)
+
+
+### Features
+
+* **editForm:** added edit form via reactive forms and generic error handling ([464bb12](https://github.com/jdnierth/radio-plays/commits/464bb12b0764abdb29afe9850c5aac80fa4320b3))
+
+
+### Bug Fixes
+
+* **error handling:** [#4](https://github.com/jdnierth/radio-plays/issues/4) service to generically return an error message ([6be31a7](https://github.com/jdnierth/radio-plays/commits/6be31a7b26d1ac4d9384389c9ff194c561fa9f2a))
+
 ### [0.0.10](https://github.com/jdnierth/radio-plays/compare/v0.0.9...v0.0.10) (2021-04-03)
 
 
