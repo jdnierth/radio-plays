@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/jdnierth/radio-plays/compare/v0.0.11...v0.1.0) (2021-04-10)
+
+
+### Features
+
+* **code:** added login functionality ([8b8e48e](https://github.com/jdnierth/radio-plays/commits/8b8e48e45276a296ece0a912f0ee7708db238236))
+* **code:** initial draft of authentication to firebase API ([32f53f4](https://github.com/jdnierth/radio-plays/commits/32f53f4fd6b0d9b6d28f53608a7c8f22dba8d497))
+* **editForm:** filling editForm with live data ([0dcb329](https://github.com/jdnierth/radio-plays/commits/0dcb32975d5e2b743a7c1aa8b65b52c041e79e3c))
+* **errorhandling:** errorhandling per control ([657ab53](https://github.com/jdnierth/radio-plays/commits/657ab53129d3a407628fe3b2f03dc12f755a2e7f))
+* **menu:** added main menu to homepage ([2554786](https://github.com/jdnierth/radio-plays/commits/25547865da627c05171574a778ef2bc3763a8c94))
+
+
+### Bug Fixes
+
+* **authentication:** made sure user stays logged in while token is still valid ([f3b273e](https://github.com/jdnierth/radio-plays/commits/f3b273ec214ab3a6ee0d47d9e3fa1d032d96b1a3))
+* **files:** added files to gitignore ([d60edcc](https://github.com/jdnierth/radio-plays/commits/d60edcc721bdf3f0757edcd4da3f28281c2afc7e))
+* **menu:** added sub main menu ([50569b5](https://github.com/jdnierth/radio-plays/commits/50569b5efcf75f1ce0e5325112cca50cfaa2839a))
+* **menu:** reverted some code ([c985fea](https://github.com/jdnierth/radio-plays/commits/c985feade161f3eac5991deddd5f75daa8bf2c18))
+
 ### [0.0.11](https://github.com/jdnierth/radio-plays/compare/v0.0.10...v0.0.11) (2021-04-05)
 
 
