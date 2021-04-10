@@ -1,1 +1,9 @@
-<app-menu></app-menu>
+<ul *ngIf="isAuthenticated">
+  <li><a routerLink="/homepage" routerLinkActive="active">Homepage</a></li>
+  <li>
+    <a routerLink="/speaker/list" routerLinkActive="active">List speakers</a>
+  </li>
+  <li>
+    <a routerLink="/speaker/create">Create speaker</a>
+  </li>
+</ul>

@@ -3,6 +3,7 @@
 
   > li {
     display: inline;
+    list-style-position: inside;
 
     &:not(:first-child):before {
       display: inline-block;
@@ -16,11 +17,6 @@
   }
 }
 
-/* The navigation menu */
-.navbar {
-  overflow: hidden;
-}
-
 /* Navigation links */
 .navbar a {
   text-decoration: none;
@@ -28,26 +24,29 @@
 
 /* The subnavigation menu */
 .subnav {
-  overflow: hidden;
+  position: relative;
 }
 
 /* Style the subnav content - positioned absolute */
 .subnav-content {
-  display: none;
+  opacity: 0;
   position: absolute;
   left: 0;
-  background-color: red;
-  width: 100%;
+  background-color: #1976d2;
+  margin-top: 30px;
+  padding: 0 20px 20px 20px;
+  width: 220px;
   z-index: 1;
+  transition: opacity 0.2s ease-in;
 }
 
 /* Add a grey background color on hover */
 .subnav-content a:hover {
-  background-color: #fe00ee;
+  opacity: 0.5;
   color: black;
 }
 
 /* When you move the mouse over the subnav container, open the subnav content */
 .subnav:hover .subnav-content {
-  display: block;
+  opacity: 1;
 }
