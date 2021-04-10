@@ -1,13 +1,23 @@
 <nav>
-  <ul *ngIf="!isAuthenticated">
-    <li><a routerLink="/auth" routerLinkActive="active">Login</a></li>
+  <ul *ngIf="!isAuthenticated; else loggedIn" class="navbar">
+    <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
   </ul>
-  <ul *ngIf="isAuthenticated">
+  <ng-template #loggedIn>
+  <ul class="navbar">
     <li><a routerLink="/homepage" routerLinkActive="active">Homepage</a></li>
-    <li><a routerLink="/speaker/list" routerLinkActive="active">Speaker</a></li>
-    <li><a href="#" (click)="addSpeaker($event);">Add speaker</a></li>
+    <li class="subnav">Speakers
+      <ul class="subnav-content">
+        <li>
+          <a routerLink="/speaker/list" routerLinkActive="active">List speakers</a>
+        </li>
+        <li>
+          <a routerLink="/speaker/create">Create speaker</a>
+        </li>
+      </ul>
+    </li>
     <li>
-      <a href="#">Logout</a>
+      <a href="#" (click)="logout()">Logout</a>
     </li>
   </ul>
+  </ng-template>
 </nav>

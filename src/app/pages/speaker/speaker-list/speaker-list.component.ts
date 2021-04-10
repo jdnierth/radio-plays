@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from "rxjs";
 
-import { SpeakerService } from "../../services/speaker.service";
+import { SpeakerService } from "../../../services/speaker/speaker.service";
 
 @Component({
   selector: 'app-speaker-list',

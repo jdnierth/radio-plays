@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
-import { FormsService } from "../../services/forms.service";
+
+import { FormsService } from "../../../services/forms/forms.service";
 
 @Component({
   selector: 'app-speaker-create',

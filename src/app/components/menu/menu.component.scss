@@ -1,7 +1,7 @@
-ul {
+.navbar {
   float: left;
 
-  li {
+  > li {
     display: inline;
 
     &:not(:first-child):before {
@@ -16,3 +16,38 @@ ul {
   }
 }
 
+/* The navigation menu */
+.navbar {
+  overflow: hidden;
+}
+
+/* Navigation links */
+.navbar a {
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  overflow: hidden;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #fe00ee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}

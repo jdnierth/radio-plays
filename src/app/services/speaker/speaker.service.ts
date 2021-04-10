@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-
 import { AngularFirestore } from '@angular/fire/firestore';
-
 import { Observable } from "rxjs";
 
+import { environment } from "../../../environments/environment";
+
 import { speakerFixture } from "./speakers.fixture";
-import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

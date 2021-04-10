@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { filter, switchMap } from "rxjs/operators";
 import { Observable } from "rxjs";
 
-import { SpeakerService } from "../../services/speaker.service";
+import { SpeakerService } from "../../../services/speaker/speaker.service";
 
 @Component({
   selector: 'app-speaker-edit',
