@@ -17,7 +17,7 @@ import { SpeakerListComponent } from './pages/speaker-list/speaker-list.componen
 
 import { environment } from "../environments/environment";
 import { FooterComponent } from './components/footer/footer.component';
-
+import { AuthpageComponent } from "./pages/authpage/authpage.component";
 
 @NgModule({
   declarations: [
@@ -28,15 +28,16 @@ import { FooterComponent } from './components/footer/footer.component';
     SpeakerEditComponent,
     SpeakerCreateComponent,
     SpeakerListComponent,
-    FooterComponent
+    FooterComponent,
+    AuthpageComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
-    AngularFirestoreModule,
-    ReactiveFormsModule
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

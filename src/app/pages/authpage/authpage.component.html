@@ -1,0 +1,18 @@
+<h1>Login</h1>
+<form action="" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+  <label>Email
+    <input type="email" name="email" formControlName="email">
+    <span *ngIf="email.invalid && email.touched && getErrorMsgFromControl('email', email) as errorMsg"
+      class="errorText">{{ errorMsg }}
+    </span>
+  </label>
+  <br/>
+  <label>Password
+    <input type="password" name="password" formControlName="password">
+    <span *ngIf="password.invalid && password.touched && getErrorMsgFromControl('password', password) as errorMsg"
+      class="errorText">{{ errorMsg }}
+    </span>
+  </label>
+  <br/>
+  <button [disabled]="!loginForm.valid" type="submit">Login</button>
+</form>
