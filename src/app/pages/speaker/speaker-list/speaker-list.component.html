@@ -1,3 +1,8 @@
-<ul *ngIf="speakers$ | async as speakers">
-  <li *ngFor="let speaker of speakers">{{ speaker.firstname }} {{ speaker.lastname }}</li>
-</ul>
+<div *ngIf="speakers" class="flex-container">
+  <div *ngFor="let speaker of speakers" class="flex-item">
+    <div>{{ speaker.firstname }} {{ speaker.lastname }}</div>
+    <div class="actions">
+      <a routerLink="../{{speaker.id}}/edit">Edit</a>
+    </div>
+  </div>
+</div>

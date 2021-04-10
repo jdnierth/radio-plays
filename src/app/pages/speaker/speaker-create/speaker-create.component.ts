@@ -12,7 +12,7 @@ export class SpeakerCreateComponent implements OnInit {
 
   createSpeakerForm: FormGroup;
 
-  constructor(private formsService: FormsService) { }
+  constructor(private formService: FormsService) { }
 
   get firstname() {
     return this.createSpeakerForm.get('firstname') as FormControl;
@@ -45,7 +45,7 @@ export class SpeakerCreateComponent implements OnInit {
   }
 
   getErrorMsgFromControl(formControlLabel: string, formControl: FormControl): string {
-    return this.formsService.getErrorMsgFromControl(formControlLabel, formControl);
+    return this.formService.getErrorMsgFromControl(formControlLabel, formControl);
   }
 
   submitForm() {

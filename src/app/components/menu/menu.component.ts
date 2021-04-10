@@ -27,12 +27,6 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.userSub.unsubscribe();
   }
 
-  addSpeaker(e) {
-    e.preventDefault();
-
-    this.speakerService.setSpeakers();
-  }
-
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);

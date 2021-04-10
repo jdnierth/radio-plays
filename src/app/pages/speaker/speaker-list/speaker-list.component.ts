@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from "rxjs";
-
 import { SpeakerService } from "../../../services/speaker/speaker.service";
+import {Speaker} from "../../../services/speaker/speaker.model";
 
 @Component({
   selector: 'app-speaker-list',
@@ -10,12 +9,19 @@ import { SpeakerService } from "../../../services/speaker/speaker.service";
   styleUrls: ['./speaker-list.component.scss']
 })
 export class SpeakerListComponent implements OnInit {
-  speakers$: Observable<any>;
+  speakers: Speaker[];
+  subscription: any;
 
   constructor(private speakerService: SpeakerService) { }
 
   ngOnInit(): void {
-    this.speakers$ = this.speakerService.getSpeakers();
+    this.subscription = this.speakerService.speakers$
+      .subscribe(
+        (speakers: Speaker[]) => {
+          this.speakers = speakers;
+        }
+      );
+    this.speakers = this.speakerService.getSpeakers();
   }
 
 

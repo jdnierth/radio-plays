@@ -16,7 +16,7 @@ export class AuthpageComponent implements OnInit {
   loginForm: FormGroup;
   errorMsg = '';
 
-  constructor(private formsService: FormsService, private authService: AuthService, private router: Router) { }
+  constructor(private formService: FormsService, private authService: AuthService, private router: Router) { }
 
   get email() {
     return this.loginForm.get('email') as FormControl;
@@ -38,7 +38,7 @@ export class AuthpageComponent implements OnInit {
   }
 
   getErrorMsgFromControl(formControlLabel: string, formControl: FormControl): string {
-    return this.formsService.getErrorMsgFromControl(formControlLabel, formControl);
+    return this.formService.getErrorMsgFromControl(formControlLabel, formControl);
   }
 
   submitForm() {
