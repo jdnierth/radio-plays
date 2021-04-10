@@ -47,4 +47,5 @@ testem.log
 Thumbs.db
 
 # files that might contain security information
-src/environments/**/*
+src/environments/environment.ts
+src/environments/environment.prod.ts
