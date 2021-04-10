@@ -1,10 +1,13 @@
 <nav>
-  <ul>
+  <ul *ngIf="!isAuthenticated">
     <li><a routerLink="/auth" routerLinkActive="active">Login</a></li>
+  </ul>
+  <ul *ngIf="isAuthenticated">
     <li><a routerLink="/homepage" routerLinkActive="active">Homepage</a></li>
     <li><a routerLink="/speaker/list" routerLinkActive="active">Speaker</a></li>
-  </ul>
-  <ul>
     <li><a href="#" (click)="addSpeaker($event);">Add speaker</a></li>
+    <li>
+      <a href="#">Logout</a>
+    </li>
   </ul>
 </nav>

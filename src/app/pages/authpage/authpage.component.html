@@ -1,4 +1,5 @@
 <h1>Login</h1>
+<div *ngIf="errorMsg">{{ errorMsg }}</div>
 <form action="" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="submitForm()">
   <label>Email
     <input type="email" name="email" formControlName="email">

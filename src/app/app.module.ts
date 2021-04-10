@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { AngularFireModule } from "@angular/fire";
@@ -18,6 +18,7 @@ import { SpeakerListComponent } from './pages/speaker-list/speaker-list.componen
 import { environment } from "../environments/environment";
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthpageComponent } from "./pages/authpage/authpage.component";
+import { AuthInterceptorService } from "./services/auth/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,13 @@ import { AuthpageComponent } from "./pages/authpage/authpage.component";
     AppRoutingModule,
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

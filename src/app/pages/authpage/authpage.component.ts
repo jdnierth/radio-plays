@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { FormsService} from "../../services/forms.service";
-import {AuthService} from "../../services/auth.service";
-import {AuthResponseData} from "../../services/auth.response.model";
+
+import { FormsService } from "../../services/forms.service";
+import { AuthService } from "../../services/auth/auth.service";
+import { AuthResponseData } from "../../services/auth/auth.response.model";
 
 @Component({
   selector: 'app-authpage',
@@ -12,8 +14,9 @@ import {AuthResponseData} from "../../services/auth.response.model";
 export class AuthpageComponent implements OnInit {
 
   loginForm: FormGroup;
+  errorMsg = '';
 
-  constructor(private formsService: FormsService, private authService: AuthService) { }
+  constructor(private formsService: FormsService, private authService: AuthService, private router: Router) { }
 
   get email() {
     return this.loginForm.get('email') as FormControl;
@@ -48,9 +51,9 @@ export class AuthpageComponent implements OnInit {
     const password = this.password.value;
 
     this.authService.login(email, password).subscribe((responseData: AuthResponseData) => {
-      console.log(responseData);
+      this.router.navigate(['/homepage']);
     }, error => {
-      console.log('Error: ', error);
+      this.errorMsg = error;
     });
 
     this.loginForm.reset();
