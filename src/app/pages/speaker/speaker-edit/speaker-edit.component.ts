@@ -31,6 +31,7 @@ export class SpeakerEditComponent implements OnInit {
       map( params => +params.get('id'))
     )
     .subscribe((id:number) =>  {
+      this.speakerId = id;
       let currentSpeaker = this.speakerService.getSpeaker(id);
       this.createForm(currentSpeaker);
     }

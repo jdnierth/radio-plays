@@ -55,7 +55,6 @@ export class SpeakerService {
   }
 
   getSpeaker(id: number) {
-    console.log('speakers: ', this.speakers);
     return this.speakers[id];
   }
 }
