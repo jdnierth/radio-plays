@@ -23,10 +23,18 @@ export class SpeakerService {
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
-  putSpeakers(speaker: Speaker[]) {
+  putSpeakers(speakers: Speaker[]) {
+    this.http.put(this.speakersDBUrl, speakers)
+      .subscribe(response  => {
+        console.log('Update all speakers Response: ', response);
+        this.speakersChanged.emit(this.speakers.slice());
+      });
+  }
+
+  putSpeaker(speaker: Speaker) {
     this.http.put(this.speakersDBUrl, speaker)
       .subscribe(response  => {
-        console.log('Response: ', response);
+        console.log('Update one speaker Response: ', response);
         this.speakersChanged.emit(this.speakers.slice());
       });
   }

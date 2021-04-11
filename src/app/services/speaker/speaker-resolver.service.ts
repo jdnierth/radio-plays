@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable} from "rxjs";
+import { filter, tap } from "rxjs/operators";
 
 import { Speaker } from "./speaker.model";
 import { SpeakerService } from "./speaker.service";
-import {filter, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'

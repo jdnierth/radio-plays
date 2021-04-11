@@ -2,7 +2,7 @@ import { Speaker } from "./speaker.model";
 
 export const speakerFixture: Speaker[] = [
   {
-    id: 1,
+    id: 0,
     firstname: 'Andreas',
     lastname: 'Fröhlich',
     aliases: [
@@ -10,7 +10,7 @@ export const speakerFixture: Speaker[] = [
     ]
   },
   {
-    id: 2,
+    id: 1,
     firstname: 'Hans',
     lastname: 'Paetsch',
     aliases: [

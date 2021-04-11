@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 import { filter, map } from "rxjs/operators";
 
@@ -7,18 +7,22 @@ import { SpeakerService } from "../../../services/speaker/speaker.service";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { FormsService } from "../../../services/forms/forms.service";
 import { Speaker } from "../../../services/speaker/speaker.model";
+import { CanComponentDeactivated } from "./can-deactivate-guard.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-speaker-edit',
   templateUrl: './speaker-edit.component.html',
   styleUrls: ['./speaker-edit.component.scss']
 })
-export class SpeakerEditComponent implements OnInit {
+export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
   speakerId: number;
   editSpeakerForm: FormGroup;
   isLoading: true;
+  changesSaved = false; // Making sure the user can not navigate away before hitting 'save'
 
   constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
               private speakerService: SpeakerService,
               private formService: FormsService) {}
 
@@ -33,8 +37,7 @@ export class SpeakerEditComponent implements OnInit {
       this.speakerId = id;
       let currentSpeaker = this.speakerService.getSpeaker(id);
       this.createForm(currentSpeaker);
-    }
-    );
+    });
   }
 
   get firstname() {
@@ -74,6 +77,16 @@ export class SpeakerEditComponent implements OnInit {
       console.log('x: ', this.editSpeakerForm.value);
       const speaker = this.editSpeakerForm.value;
       this.speakerService.putSpeakers([speaker]);
+      this.changesSaved = true;
+      this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+    }
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if(this.editSpeakerForm.touched && this.editSpeakerForm.dirty && !this.changesSaved) {
+      return confirm("Do you want to save your changes?")
+    } else {
+      return true;
     }
   }
 }

@@ -11,6 +11,8 @@ import { SpeakerResolverService } from "./services/speaker/speaker-resolver.serv
 import { SpeakerCreateComponent } from "./pages/speaker/speaker-create/speaker-create.component";
 import { SpeakerEditComponent } from "./pages/speaker/speaker-edit/speaker-edit.component";
 import { SpeakerListComponent } from "./pages/speaker/speaker-list/speaker-list.component";
+import { CanDeactivateGuard } from "./pages/speaker/speaker-edit/can-deactivate-guard.service";
+import { SpeakerImportComponent } from "./pages/speaker/speaker-import/speaker-import.component";
 
 const routes: Routes = [
   { path: 'homepage', component: HomepageComponent },
@@ -18,6 +20,10 @@ const routes: Routes = [
     path: 'speaker',
     canActivate: [ AuthGuardService ],
     children: [
+      {
+        path: 'import',
+        component: SpeakerImportComponent
+      },
       {
         path: 'list',
         component: SpeakerListComponent,
@@ -30,7 +36,8 @@ const routes: Routes = [
       {
         path: ':id/edit',
         component: SpeakerEditComponent,
-        resolve: { speakers: SpeakerResolverService }
+        resolve: { speakers: SpeakerResolverService },
+        canDeactivate: [ CanDeactivateGuard ]
       },
     ]
   },

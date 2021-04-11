@@ -20,6 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AuthpageComponent } from "./pages/authpage/authpage.component";
 import { AuthInterceptorService } from "./services/auth/auth-interceptor.service";
 import { SpeakerComponent } from "./pages/speaker/container-component/speaker.component";
+import { CanDeactivateGuard } from "./pages/speaker/speaker-edit/can-deactivate-guard.service";
+import { SpeakerImportComponent } from './pages/speaker/speaker-import/speaker-import.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { SpeakerComponent } from "./pages/speaker/container-component/speaker.co
     SpeakerComponent,
     SpeakerCreateComponent,
     SpeakerEditComponent,
-    SpeakerListComponent
+    SpeakerListComponent,
+    SpeakerImportComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { SpeakerComponent } from "./pages/speaker/container-component/speaker.co
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-    }
+    },
+    CanDeactivateGuard
   ],
   bootstrap: [AppComponent]
 })
