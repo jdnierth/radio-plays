@@ -18,6 +18,7 @@ import { Observable } from "rxjs";
 export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
   speakerId: number;
   editSpeakerForm: FormGroup;
+  currentSpeaker: Speaker;
   isLoading: true;
   changesSaved = false; // Making sure the user can not navigate away before hitting 'save'
 
@@ -29,14 +30,15 @@ export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
   ngOnInit(): void {
     this.createForm(null);
 
+
     this.activatedRoute.paramMap.pipe(
       filter(params => params != null),
       map( params => +params.get('id'))
     )
     .subscribe((id:number) =>  {
       this.speakerId = id;
-      let currentSpeaker = this.speakerService.getSpeaker(id);
-      this.createForm(currentSpeaker);
+      this.currentSpeaker = this.speakerService.getSpeaker(id);
+      this.createForm(this.currentSpeaker);
     });
   }
 
@@ -82,9 +84,17 @@ export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
     }
   }
 
+  resetForm() {
+    this.editSpeakerForm.patchValue({
+      firstname: this.currentSpeaker.firstname,
+      lastname: this.currentSpeaker.lastname,
+      aliases: []
+    });
+  }
+
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     if(this.editSpeakerForm.touched && this.editSpeakerForm.dirty && !this.changesSaved) {
-      return confirm("Do you want to save your changes?")
+      return confirm("Do you want to save your changes?");
     } else {
       return true;
     }
