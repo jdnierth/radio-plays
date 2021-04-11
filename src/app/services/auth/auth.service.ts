@@ -76,6 +76,10 @@ export class AuthService {
       );
     }
 
+    if(!user?.token) {
+      this.logout();
+    }
+
     return user;
   }
 
