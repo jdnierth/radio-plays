@@ -15,14 +15,18 @@ export class SpeakerListComponent implements OnInit {
   constructor(private speakerService: SpeakerService) { }
 
   ngOnInit(): void {
+    this.speakers = this.speakerService.getSpeakers();
+
     this.subscription = this.speakerService.speakers$
       .subscribe(
         (speakers: Speaker[]) => {
           this.speakers = speakers;
         }
       );
-    this.speakers = this.speakerService.getSpeakers();
+
+    this.speakerService.speakersChanged
+      .subscribe((speakers:Speaker[]) => {
+        this.speakers = speakers;
+    });
   }
-
-
 }

@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { AngularFirestore } from '@angular/fire/firestore';
-import {Observable, Subject} from "rxjs";
+import { Observable, Subject } from "rxjs";
+import { map, tap } from "rxjs/operators";
 
 import { environment } from "../../../environments/environment";
 
-import { speakerFixture } from "./speakers.fixture";
-import {Speaker} from "./speaker.model";
-import {map, tap} from "rxjs/operators";
+import { Speaker } from "./speaker.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpeakerService {
   speakers$ = new Subject<Speaker[]>();
+  speakersChanged = new EventEmitter<Speaker[]>();
+
   private speakers: Speaker[] = [];
 
   private speakersDBUrl = environment.firebase.databaseURL + '/speakers.json';
@@ -22,11 +23,16 @@ export class SpeakerService {
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
-  putSpeakers() {
-    this.http.put(this.speakersDBUrl, speakerFixture)
+  putSpeakers(speaker: Speaker[]) {
+    this.http.put(this.speakersDBUrl, speaker)
       .subscribe(response  => {
         console.log('Response: ', response);
+        this.speakersChanged.emit(this.speakers.slice());
       });
+  }
+
+  updateSpeaker(speaker: Speaker) {
+    //firebase.database().ref('users/' + userId).set(
   }
 
   fetchSpeakers() {
@@ -41,17 +47,19 @@ export class SpeakerService {
         }),
         tap(speakers => {
           this.setSpeakers(speakers);
+          this.speakersChanged.emit(this.speakers.slice());
         })
       );
   }
 
   getSpeakers() {
-    return this.speakers;
+    return this.speakers.slice();
   }
 
   setSpeakers(speakers:Speaker[]) {
     this.speakers = speakers;
     this.speakers$.next(this.speakers.slice());
+    this.speakersChanged.emit(this.speakers.slice());
   }
 
   getSpeaker(id: number) {

@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params, Route, Router} from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
-import {filter, map, switchMap, take, tap} from "rxjs/operators";
-import { Observable } from "rxjs";
+import { filter, map } from "rxjs/operators";
 
 import { SpeakerService } from "../../../services/speaker/speaker.service";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {FormsService} from "../../../services/forms/forms.service";
-import {Speaker} from "../../../services/speaker/speaker.model";
+import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormsService } from "../../../services/forms/forms.service";
+import { Speaker } from "../../../services/speaker/speaker.model";
 
 @Component({
   selector: 'app-speaker-edit',
@@ -61,7 +60,7 @@ export class SpeakerEditComponent implements OnInit {
 
     this.editSpeakerForm = new FormGroup({
       "firstname": new FormControl(firstname, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(3)]),
-      "lastname": new FormControl(lastname, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(3)]),
+      "lastname": new FormControl(lastname, [Validators.required, Validators.minLength(3)]),
       "aliases": new FormArray([])
     })
   }
@@ -72,7 +71,9 @@ export class SpeakerEditComponent implements OnInit {
 
   submitForm() {
     if(this.editSpeakerForm.valid) {
-      // SUBMIT FORM
+      console.log('x: ', this.editSpeakerForm.value);
+      const speaker = this.editSpeakerForm.value;
+      this.speakerService.putSpeakers([speaker]);
     }
   }
 }

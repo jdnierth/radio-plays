@@ -19,7 +19,6 @@ export class MenuComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
-      console.log('this.auth: ', this.isAuthenticated)
     });
   }
 
@@ -31,5 +30,4 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
 }
