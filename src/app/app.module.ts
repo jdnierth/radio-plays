@@ -22,6 +22,7 @@ import { AuthInterceptorService } from "./services/auth/auth-interceptor.service
 import { SpeakerComponent } from "./pages/speaker/container-component/speaker.component";
 import { CanDeactivateGuard } from "./pages/speaker/speaker-edit/can-deactivate-guard.service";
 import { SpeakerImportComponent } from './pages/speaker/speaker-import/speaker-import.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SpeakerImportComponent } from './pages/speaker/speaker-import/speaker-i
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
