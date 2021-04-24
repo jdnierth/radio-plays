@@ -1,5 +1,7 @@
+export type Speakers = { [key:string] : Speaker }
+
 export interface Speaker {
-  id: number,
+  id: string,
   firstname: string,
   lastname: string,
   image?: string

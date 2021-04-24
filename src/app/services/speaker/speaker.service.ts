@@ -6,16 +6,16 @@ import { map, tap } from "rxjs/operators";
 
 import { environment } from "../../../environments/environment";
 
-import { Speaker } from "./speaker.model";
+import { Speaker, Speakers } from "./speaker.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpeakerService {
-  speakers$ = new Subject<Speaker[]>();
-  speakersChanged = new EventEmitter<Speaker[]>();
+  speakers$ = new Subject<Speakers>();
+  speakersChanged = new EventEmitter<Speakers>();
 
-  private speakers: Speaker[] = [];
+  private speakers: Speakers = {};
 
   private speakersDBUrl = environment.firebase.databaseURL + '/speakers.json';
 
@@ -23,19 +23,33 @@ export class SpeakerService {
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
-  putSpeakers(speakers: Speaker[]) {
+  putSpeakers(speakers:Speakers) {
     this.http.put(this.speakersDBUrl, speakers)
       .subscribe(response  => {
         console.log('Update all speakers Response: ', response);
-        this.speakersChanged.emit(this.speakers.slice());
+        this.speakersChanged.emit(this.speakers);
       });
   }
 
   putSpeaker(speaker: Speaker) {
-    this.http.put(this.speakersDBUrl, speaker)
+    this.speakers = { ...this.speakers };
+    this.speakers[speaker.id] = speaker;
+
+    this.http.put(this.speakersDBUrl, this.speakers)
+    .subscribe(response  => {
+      console.log('Update one speaker Response: ', response);
+      this.speakersChanged.emit(this.speakers);
+    });
+  }
+
+  postSpeaker(speaker: Speaker) {
+    this.http.post(this.speakersDBUrl, speaker)
+      .pipe(
+        tap(data => console.log(data))
+      )
       .subscribe(response  => {
         console.log('Update one speaker Response: ', response);
-        this.speakersChanged.emit(this.speakers.slice());
+        this.speakersChanged.emit(this.speakers);
       });
   }
 
@@ -44,33 +58,26 @@ export class SpeakerService {
   }
 
   fetchSpeakers() {
-    return this.http.get<Speaker[]>(this.speakersDBUrl)
+    return this.http.get<Speakers>(this.speakersDBUrl)
       .pipe(
-        map(speakers => {
-          return speakers.map(speaker => {
-            return {
-              ...speaker,
-            };
-          });
-        }),
         tap(speakers => {
           this.setSpeakers(speakers);
-          this.speakersChanged.emit(this.speakers.slice());
+          this.speakersChanged.emit(this.speakers);
         })
       );
   }
 
-  getSpeakers() {
-    return this.speakers.slice();
+  getSpeakers():any {
+    return this.speakers;
   }
 
-  setSpeakers(speakers:Speaker[]) {
+  setSpeakers(speakers:Speakers) {
     this.speakers = speakers;
-    this.speakers$.next(this.speakers.slice());
-    this.speakersChanged.emit(this.speakers.slice());
+    this.speakers$.next(this.speakers);
+    this.speakersChanged.emit(this.speakers);
   }
 
-  getSpeaker(id: number) {
+  getSpeaker(id: string) {
     return this.speakers[id];
   }
 }

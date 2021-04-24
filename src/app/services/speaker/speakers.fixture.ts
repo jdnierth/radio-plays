@@ -1,20 +1,21 @@
-import { Speaker } from "./speaker.model";
+import { Speaker, Speakers } from "./speaker.model";
 
-export const speakerFixture: Speaker[] = [
-  {
-    id: 0,
+export const speakerFixture:Speakers = {
+  "MZ3dAbC2GX5g8iQMMl5": {
+    id: "MZ3dAbC2GX5g8iQMMl5",
     firstname: 'Andreas',
     lastname: 'Fröhlich',
     aliases: [
-      { name: "A. Fröhlich" }
+      {name: "A. Fröhlich"}
     ]
   },
-  {
-    id: 1,
-    firstname: 'Hans',
-    lastname: 'Paetsch',
-    aliases: [
-      { name: "H. Paetsch" }
-    ]
-  }
-]
+  "MZ3dAbC2GX5g8iQMMl3": {
+      id: "MZ3dAbC2GX5g8iQMMl3",
+      firstname: 'Hans',
+      lastname: 'Paetsch',
+      aliases: [
+        {name: "H. Paetsch"}
+      ]
+    }
+}
+

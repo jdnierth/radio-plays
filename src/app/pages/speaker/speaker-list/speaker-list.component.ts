@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SpeakerService } from "../../../services/speaker/speaker.service";
-import {Speaker} from "../../../services/speaker/speaker.model";
+import { Speaker, Speakers } from "../../../services/speaker/speaker.model";
 
 @Component({
   selector: 'app-speaker-list',
@@ -9,7 +9,7 @@ import {Speaker} from "../../../services/speaker/speaker.model";
   styleUrls: ['./speaker-list.component.scss']
 })
 export class SpeakerListComponent implements OnInit {
-  speakers: Speaker[];
+  speakers: Speakers;
   subscription: any;
 
   constructor(private speakerService: SpeakerService) { }
@@ -19,13 +19,13 @@ export class SpeakerListComponent implements OnInit {
 
     this.subscription = this.speakerService.speakers$
       .subscribe(
-        (speakers: Speaker[]) => {
+        (speakers: Speakers) => {
           this.speakers = speakers;
         }
       );
 
     this.speakerService.speakersChanged
-      .subscribe((speakers:Speaker[]) => {
+      .subscribe((speakers:Speakers) => {
         this.speakers = speakers;
     });
   }

@@ -2,6 +2,7 @@
 <div *ngIf="isLoading">Data is loading ...</div>
 <div *ngIf="!isLoading">
 <form [formGroup]="editSpeakerForm" (ngSubmit)="submitForm()">
+  <input formControlName="id" type="hidden" value="{{  speakerId }}"/>
   <div>
     <label>
       Firstname:

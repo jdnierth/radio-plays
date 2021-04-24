@@ -23,6 +23,7 @@ import { SpeakerComponent } from "./pages/speaker/container-component/speaker.co
 import { CanDeactivateGuard } from "./pages/speaker/speaker-edit/can-deactivate-guard.service";
 import { SpeakerImportComponent } from './pages/speaker/speaker-import/speaker-import.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     AngularFirestoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [
     {

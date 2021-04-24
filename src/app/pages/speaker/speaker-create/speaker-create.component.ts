@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { FormsService } from "../../../services/forms/forms.service";
+import { SpeakerService } from "../../../services/speaker/speaker.service";
 
 @Component({
   selector: 'app-speaker-create',
@@ -12,7 +13,7 @@ export class SpeakerCreateComponent implements OnInit {
 
   createSpeakerForm: FormGroup;
 
-  constructor(private formService: FormsService) { }
+  constructor(private formService: FormsService, private speakerService: SpeakerService) { }
 
   get firstname() {
     return this.createSpeakerForm.get('firstname') as FormControl;
@@ -50,7 +51,8 @@ export class SpeakerCreateComponent implements OnInit {
 
   submitForm() {
     if(this.createSpeakerForm.valid) {
-      // SUBMIT FORM
+      console.log(this.createSpeakerForm.value);
+      this.speakerService.postSpeaker(this.createSpeakerForm.value);
     }
   }
 }

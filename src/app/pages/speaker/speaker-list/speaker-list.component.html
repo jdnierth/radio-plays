@@ -1,8 +1,8 @@
 <div *ngIf="speakers" class="flex-container">
-  <div *ngFor="let speaker of speakers" class="flex-item">
-    <div>{{ speaker.firstname }} {{ speaker.lastname }}</div>
+  <div *ngFor="let speaker of speakers | keyvalue" class="flex-item">
+    <div>{{ speaker.value.firstname }} {{ speaker.value.lastname }}</div>
     <div class="actions">
-      <a routerLink="../{{speaker.id}}/edit">Edit</a>
+      <a routerLink="../{{speaker.value.id}}/edit">Edit</a>
     </div>
   </div>
 </div>

@@ -3,24 +3,24 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/r
 import { Observable} from "rxjs";
 import { filter, tap } from "rxjs/operators";
 
-import { Speaker } from "./speaker.model";
+import { Speaker, Speakers } from "./speaker.model";
 import { SpeakerService } from "./speaker.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SpeakerResolverService implements Resolve<Speaker[]>  {
+export class SpeakerResolverService implements Resolve<Speakers>  {
 
   constructor(private speakerService: SpeakerService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Speaker[]> | Promise<Speaker[]> | Speaker[] {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Speakers> | Promise<Speakers> | Speakers {
     let speakers = this.speakerService.getSpeakers();
 
-    if (speakers.length === 0) {
+    if (Object.keys(speakers).length === 0) {
       return this.speakerService.fetchSpeakers()
         .pipe(
-          tap(speakers => console.log('resolver speakers: ', speakers)),
-          filter(speakers => speakers.length > 0)
+          filter(speakers => Object.keys(speakers).length > 0),
+          tap(speakers => console.log('resolver speakers: ', speakers))
         );
     } else {
       console.log('resolver speakers:', speakers);

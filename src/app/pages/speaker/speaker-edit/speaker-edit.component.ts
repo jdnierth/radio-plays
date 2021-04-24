@@ -16,7 +16,7 @@ import { Observable } from "rxjs";
   styleUrls: ['./speaker-edit.component.scss']
 })
 export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
-  speakerId: number;
+  speakerId: string;
   editSpeakerForm: FormGroup;
   currentSpeaker: Speaker;
   isLoading: true;
@@ -33,13 +33,17 @@ export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
 
     this.activatedRoute.paramMap.pipe(
       filter(params => params != null),
-      map( params => +params.get('id'))
+      map( params => params.get('id'))
     )
-    .subscribe((id:number) =>  {
+    .subscribe((id:string) =>  {
       this.speakerId = id;
       this.currentSpeaker = this.speakerService.getSpeaker(id);
       this.createForm(this.currentSpeaker);
     });
+  }
+
+  get id() {
+    return this.editSpeakerForm.get('id') as FormControl;
   }
 
   get firstname() {
@@ -55,15 +59,18 @@ export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
   }
 
   createForm(speaker: Speaker) {
+    let id = '';
     let firstname = '';
     let lastname = '';
 
     if(speaker) {
+      id = speaker.id;
       firstname = speaker.firstname;
       lastname = speaker.lastname;
     }
 
     this.editSpeakerForm = new FormGroup({
+      "id": new FormControl(id, [Validators.required]),
       "firstname": new FormControl(firstname, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(3)]),
       "lastname": new FormControl(lastname, [Validators.required, Validators.minLength(3)]),
       "aliases": new FormArray([])
@@ -76,11 +83,11 @@ export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
 
   submitForm() {
     if(this.editSpeakerForm.valid) {
-      console.log('x: ', this.editSpeakerForm.value);
+
       const speaker = this.editSpeakerForm.value;
-      this.speakerService.putSpeakers([speaker]);
+      this.speakerService.putSpeaker(speaker);
       this.changesSaved = true;
-      this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+      this.router.navigate(['../../list'], { relativeTo: this.activatedRoute });
     }
   }
 
