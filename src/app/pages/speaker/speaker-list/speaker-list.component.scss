@@ -17,3 +17,24 @@
 .actions {
   margin-left: auto;
 }
+.mat-header-row {
+  background-color: #efefef;
+}
+
+.mat-header-row,
+.mat-row {
+  padding: 2px 10px;
+  justify-content: space-between;
+}
+
+.mat-row {
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+}
+.description-cell {
+  text-align: left;
+  width: 30%;
+}

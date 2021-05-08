@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -14,16 +20,14 @@ import { ErrorpageComponent } from './pages/errorpage/errorpage.component';
 import { SpeakerEditComponent } from './pages/speaker/speaker-edit/speaker-edit.component';
 import { SpeakerCreateComponent } from './pages/speaker/speaker-create/speaker-create.component';
 import { SpeakerListComponent } from './pages/speaker/speaker-list/speaker-list.component';
+import { SpeakerImportComponent } from './pages/speaker/speaker-import/speaker-import.component';
+import { SpeakerComponent } from "./pages/speaker/container-component/speaker.component";
 
 import { environment } from "../environments/environment";
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthpageComponent } from "./pages/authpage/authpage.component";
 import { AuthInterceptorService } from "./services/auth/auth-interceptor.service";
-import { SpeakerComponent } from "./pages/speaker/container-component/speaker.component";
 import { CanDeactivateGuard } from "./pages/speaker/speaker-edit/can-deactivate-guard.service";
-import { SpeakerImportComponent } from './pages/speaker/speaker-import/speaker-import.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -48,7 +52,11 @@ import { MatTabsModule } from "@angular/material/tabs";
     AppRoutingModule,
     AngularFirestoreModule,
     BrowserAnimationsModule,
-    MatTabsModule
+
+    MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     {

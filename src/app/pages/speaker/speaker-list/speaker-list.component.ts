@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SpeakerService } from "../../../services/speaker/speaker.service";
 import { Speaker, Speakers } from "../../../services/speaker/speaker.model";
+import { SpeakersDataSource } from "../../../services/speakerCDKDataSource/speakerCDKDataSource";
 
 @Component({
   selector: 'app-speaker-list',
@@ -11,6 +12,9 @@ import { Speaker, Speakers } from "../../../services/speaker/speaker.model";
 export class SpeakerListComponent implements OnInit {
   speakers: Speakers;
   subscription: any;
+
+  dataSource: SpeakersDataSource;
+  displayedColumns = ["Firstname", "Lastname", "Aliases"];
 
   constructor(private speakerService: SpeakerService) { }
 
@@ -25,8 +29,12 @@ export class SpeakerListComponent implements OnInit {
       );
 
     this.speakerService.speakersChanged
-      .subscribe((speakers:Speakers) => {
+      .subscribe((speakers: Speakers) => {
         this.speakers = speakers;
-    });
+      });
+
+    this.dataSource = new SpeakersDataSource(this.speakerService);
+
+    this.dataSource.loadSpeakers();
   }
 }

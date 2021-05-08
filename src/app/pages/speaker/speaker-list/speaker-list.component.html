@@ -6,3 +6,32 @@
     </div>
   </div>
 </div>
+
+<mat-table class="" [dataSource]="dataSource">
+
+  <ng-container matColumnDef="Firstname">
+    <div *matHeaderCellDef
+      class="description-cell">Firstname</div>
+    <div class="description-cell"
+      *matCellDef="let speaker">{{ speaker.firstname }}</div>
+  </ng-container>
+
+  <ng-container matColumnDef="Lastname">
+    <div *matHeaderCellDef
+      class="description-cell">Lastname</div>
+    <div class="description-cell"
+      *matCellDef="let speaker">{{speaker.lastname}}</div>
+  </ng-container>
+
+  <ng-container matColumnDef="Aliases">
+    <div *matHeaderCellDef
+      class="description-cell">Aliases</div>
+    <div class="description-cell"
+      *matCellDef="let speaker"><span *ngFor="let alias of speaker.aliases">{{ alias.name }}</span></div>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>

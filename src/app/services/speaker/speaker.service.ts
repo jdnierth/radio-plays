@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subject } from "rxjs";
-import { map, tap } from "rxjs/operators";
+import { tap } from "rxjs/operators";
 
 import { environment } from "../../../environments/environment";
 
