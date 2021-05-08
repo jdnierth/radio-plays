@@ -7,30 +7,30 @@
   </div>
 </div>
 
-<mat-table class="" [dataSource]="dataSource">
+<mat-table class="speaker-table" [dataSource]="dataSource">
 
-  <ng-container matColumnDef="Firstname">
+  <ng-container matColumnDef="Firstname" sticky=true>
     <div *matHeaderCellDef
       class="description-cell">Firstname</div>
     <div class="description-cell"
       *matCellDef="let speaker">{{ speaker.firstname }}</div>
   </ng-container>
 
-  <ng-container matColumnDef="Lastname">
+  <ng-container matColumnDef="Lastname" sticky=true>
     <div *matHeaderCellDef
       class="description-cell">Lastname</div>
     <div class="description-cell"
       *matCellDef="let speaker">{{speaker.lastname}}</div>
   </ng-container>
 
-  <ng-container matColumnDef="Aliases">
+  <ng-container matColumnDef="Aliases" sticky=true>
     <div *matHeaderCellDef
       class="description-cell">Aliases</div>
     <div class="description-cell"
       *matCellDef="let speaker"><span *ngFor="let alias of speaker.aliases">{{ alias.name }}</span></div>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
