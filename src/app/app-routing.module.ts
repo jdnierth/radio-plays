@@ -21,6 +21,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ],
     children: [
       {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'prefix'
+      },
+      {
         path: 'import',
         component: SpeakerImportComponent
       },
