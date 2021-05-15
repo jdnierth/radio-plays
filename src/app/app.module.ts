@@ -46,12 +46,12 @@ import { CanDeactivateGuard } from "./pages/speaker/speaker-edit/can-deactivate-
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     AngularFirestoreModule,
-    BrowserAnimationsModule,
 
     MatTabsModule,
     MatTableModule,

@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 
 import { Speaker } from "../speaker/speaker.model";
 import { SpeakerService } from "../speaker/speaker.service";
-import { catchError, map } from "rxjs/operators";
+import { catchError, map, tap } from "rxjs/operators";
 
 export class SpeakersDataSource implements DataSource<Speaker> {
 
@@ -22,6 +22,7 @@ export class SpeakersDataSource implements DataSource<Speaker> {
   loadSpeakers() {
     this.speakerService.fetchSpeakers()
       .pipe(
+        tap(data => console.log('data: ',data)),
         map( data => Object.keys(data).map(k => data[k])),
         catchError(() => of([]))
     ).subscribe(speakers => this.speakersSubject.next(speakers));

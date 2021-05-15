@@ -1,4 +1,4 @@
-import { Speaker, Speakers } from "./speaker.model";
+import { Speakers } from "./speaker.model";
 
 export const speakerFixture:Speakers = {
   "-MZ3dAbC2GX5g8iQMMl5": {
