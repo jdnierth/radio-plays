@@ -1,4 +1,4 @@
-<div *ngIf="speakers" class="flex-container">
+<!--<div *ngIf="speakers" class="flex-container">
   <div *ngFor="let speaker of speakers | keyvalue" class="flex-item">
     <div>{{ speaker.value.firstname }} {{ speaker.value.lastname }}</div>
     <div class="actions">
@@ -6,7 +6,7 @@
     </div>
   </div>
 </div>
-
+-->
 <mat-table class="speaker-table" [dataSource]="dataSource">
 
   <ng-container matColumnDef="Firstname" sticky=true>
@@ -30,8 +30,19 @@
       *matCellDef="let speaker"><span *ngFor="let alias of speaker.aliases">{{ alias.name }}</span></div>
   </ng-container>
 
+  <!-- Action Column -->
+  <ng-container matColumnDef="Action">
+    <div *matHeaderCellDef class="description-cell">Action</div>
+    <div *matCellDef="let element" class="description-cell">
+      <a (click)="actionOnRow('Edit',element)">Edit</a> |
+      <a (click)="actionOnRow('Delete',element)">Delete</a>
+    </div>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+
 
 </mat-table>

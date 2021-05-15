@@ -1,7 +1,6 @@
 .flex-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: space-evenly;
   width: 1024px;
 }
@@ -17,15 +16,16 @@
 .actions {
   margin-left: auto;
 }
+
+.speaker-table {
+  width: 100%;
+}
 .mat-header-row {
   background-color: #efefef;
   min-height: 56px;
   border-bottom-color: rgba(0,0,0,.12);
 }
 
-.mat-table {
-  display: block;
-}
 .mat-header-row,
 .mat-row {
   padding: 2px 5px;

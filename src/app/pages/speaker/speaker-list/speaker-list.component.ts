@@ -14,7 +14,7 @@ export class SpeakerListComponent implements OnInit {
   subscription: any;
 
   dataSource: SpeakersDataSource;
-  displayedColumns = ["Firstname", "Lastname", "Aliases"];
+  displayedColumns = ["Firstname", "Lastname", "Aliases", "Action"];
 
   constructor(private speakerService: SpeakerService) { }
 
@@ -36,5 +36,10 @@ export class SpeakerListComponent implements OnInit {
     this.dataSource = new SpeakersDataSource(this.speakerService);
 
     this.dataSource.loadSpeakers();
+  }
+
+  // Watchers
+  actionOnRow(actionType: string, element: SpeakersDataSource) {
+    console.log('args: ', arguments);
   }
 }
