@@ -53,10 +53,18 @@ export class SpeakerListComponent implements OnInit {
   actionOnRow(actionType: string, element: SpeakersDataSource, e) {
     e.stopPropagation();
     console.log('args: ', arguments);
+
+    switch(actionType) {
+      case 'Edit':
+        this.expandRow(this.expandedElement, element);
+        break;
+      default:
+
+    }
   }
 
   expandRow(expandedElement, element) {
-    console.log('args: ', arguments);
+    console.log('args: ', arguments, 'this expanded: ', this.expandedElement);
     return expandedElement === element ? null : element;
   }
 }
