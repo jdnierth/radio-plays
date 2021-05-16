@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-
-import { filter, map } from "rxjs/operators";
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 
 import { SpeakerService } from "../../../services/speaker/speaker.service";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
@@ -16,6 +14,9 @@ import { Observable } from "rxjs";
   styleUrls: ['./speaker-edit.component.scss']
 })
 export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
+
+  @Input() speaker: Speaker;
+
   speakerId: string;
   editSpeakerForm: FormGroup;
   currentSpeaker: Speaker;
@@ -28,10 +29,12 @@ export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
               private formService: FormsService) {}
 
   ngOnInit(): void {
-    this.createForm(null);
+    this.speakerId = this.speaker.id;
+    this.currentSpeaker = this.speaker;
+    this.createForm(this.currentSpeaker);
 
 
-    this.activatedRoute.paramMap.pipe(
+    /*this.activatedRoute.paramMap.pipe(
       filter(params => params != null),
       map( params => params.get('id'))
     )
@@ -40,6 +43,7 @@ export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
       this.currentSpeaker = this.speakerService.getSpeaker(id);
       this.createForm(this.currentSpeaker);
     });
+   */
   }
 
   get id() {
@@ -87,7 +91,7 @@ export class SpeakerEditComponent implements OnInit, CanComponentDeactivated {
       const speaker = this.editSpeakerForm.value;
       this.speakerService.putSpeaker(speaker);
       this.changesSaved = true;
-      this.router.navigate(['../../list'], { relativeTo: this.activatedRoute });
+      //this.router.navigate(['../../list'], { relativeTo: this.activatedRoute });
     }
   }
 

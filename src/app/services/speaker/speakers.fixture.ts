@@ -2,7 +2,7 @@ import { Speakers } from "./speaker.model";
 
 export const speakerFixture:Speakers = {
   "-MZ3dAbC2GX5g8iQMMl5": {
-    id: "MZ3dAbC2GX5g8iQMMl5",
+    id: "-MZ3dAbC2GX5g8iQMMl5",
     firstname: 'Andreas',
     lastname: 'Fröhlich',
     aliases: [
@@ -10,7 +10,7 @@ export const speakerFixture:Speakers = {
     ]
   },
   "-MZ3dAbC2GX5g8iQMMl3": {
-      id: "MZ3dAbC2GX5g8iQMMl3",
+      id: "-MZ3dAbC2GX5g8iQMMl3",
       firstname: 'Hans',
       lastname: 'Paetsch',
       aliases: [
@@ -18,7 +18,7 @@ export const speakerFixture:Speakers = {
       ]
     },
   "-MZ3dAbe2GX5g8iQMMl5": {
-      id: "MZ3dAbe2GX5g8iQMMl5",
+      id: "-MZ3dAbe2GX5g8iQMMl5",
       firstname: 'Bert',
       lastname: 'Bart',
       aliases: [
@@ -27,7 +27,7 @@ export const speakerFixture:Speakers = {
       ]
     },
   "-MZ3eAbC2GX5g8idMMl3": {
-      id: "MZ3eAbC2GX5g8idMMl3",
+      id: "-MZ3eAbC2GX5g8idMMl3",
       firstname: 'Hansi',
       lastname: 'Gaetsch',
       aliases: [
@@ -35,7 +35,7 @@ export const speakerFixture:Speakers = {
       ]
     },
   "-DZ3dAbC2Gsdg8iQMMl3": {
-      id: "DZ3dAbC2Gsdg8iQMMl3",
+      id: "-DZ3dAbC2Gsdg8iQMMl3",
       firstname: 'Hanse',
       lastname: 'Paetsche',
       aliases: [
@@ -43,7 +43,7 @@ export const speakerFixture:Speakers = {
       ]
     },
   "-MZ3dAbC2GXeg8iQgMl3": {
-      id: "MZ3dAbC2GXeg8iQgMl3",
+      id: "-MZ3dAbC2GXeg8iQgMl3",
       firstname: 'Hans',
       lastname: 'Paetsch',
       aliases: [

@@ -1,63 +1,34 @@
-<!--<div *ngIf="speakers" class="flex-container">
-  <div *ngFor="let speaker of speakers | keyvalue" class="flex-item">
-    <div>{{ speaker.value.firstname }} {{ speaker.value.lastname }}</div>
-    <div class="actions">
-      <a routerLink="../{{speaker.value.id}}/edit">Edit</a>
-    </div>
-  </div>
-</div>
--->
-<table mat-table class="speaker-table" [dataSource]="speakerList" multiTemplateDataRows>
+<div class="speaker-table">
+<table class="custom-table" mat-table [dataSource]="speakerList" multiTemplateDataRows>
 
   <ng-container matColumnDef="Firstname" sticky=true>
-    <th mat-header-cell *matHeaderCellDef>
-      <div class="description-cell">Firstname</div>
-    </th>
-    <td mat-cell class="description-cell"
+    <th *matHeaderCellDef>Firstname</th>
+    <td
       *matCellDef="let speaker">{{ speaker.firstname }}
     </td>
   </ng-container>
 
   <ng-container matColumnDef="Lastname" sticky=true>
-    <th mat-header-cell *matHeaderCellDef>
-     <div class="description-cell">Lastname</div>
-      </th>
-    <td mat-cell class="description-cell"
+    <th *matHeaderCellDef>Lastname</th>
+    <td
       *matCellDef="let speaker">{{speaker.lastname}}
     </td>
   </ng-container>
 
-  <!--
-  <ng-container matColumnDef="Aliases" sticky=true>
-    <th mat-header-cell *matHeaderCellDef>
-      <div class="description-cell">Aliases</div>
-    </th>
-    <td class="description-cell"
-      *matCellDef="let speaker">
-      <span *ngFor="let alias of speaker.aliases">{{ alias.name }}</span>
-    </td>
-  </ng-container>
-  -->
-
   <ng-container matColumnDef="Action">
-    <th mat-header-cell *matHeaderCellDef class="description-cell">Action</th>
-    <td mat-cell *matCellDef="let element" class="description-cell">
+    <th *matHeaderCellDef class="description-cell">Action</th>
+    <td  *matCellDef="let element" class="description-cell">
       <a (click)="expandedElement = expandedElement === element ? null : element">Edit</a> |
       <a (click)="actionOnRow('Delete',element, $event)">Delete</a>
     </td>
   </ng-container>
 
-
-  <!-- Edit Speaker -->
+  <!-- Expanding Edit Speaker form -->
   <ng-container matColumnDef="expandEditSpeaker">
-    <td mat-cell *matCellDef="let element" [attr.colspan]="speakerList.length">
+    <td  *matCellDef="let element;" [attr.colspan]="displayedColumns.length">
       <div class="speaker-edit-row-detail"
         [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-          <div>Firstname: {{ element.firstname }}</div>
-          <div>Lastname: {{ element.lastname }}</div>
-          <div *ngFor="let alias of element.aliases">
-            <div> {{ alias.name }}</div>
-          </div>
+          <app-speaker-edit [speaker]="element"></app-speaker-edit>
       </div>
     </td>
   </ng-container>
@@ -66,9 +37,13 @@
     *matHeaderRowDef="displayedColumns; sticky:true"></tr>
 
   <tr mat-row
-    *matRowDef="let element; columns: displayedColumns">
+    *matRowDef="let element; columns: displayedColumns"
+    [class.example-expanded-row]="expandedElement === element">
   </tr>
 
+  <!-- Expanding Edit Speaker form -->
   <tr mat-row *matRowDef="let row; columns: ['expandEditSpeaker']" class="speaker-edit-row"></tr>
 
 </table>
+</div>
+<!-- /.speaker-table -->

@@ -12,10 +12,11 @@ import { Speaker, Speakers } from "./speaker.model";
   providedIn: 'root'
 })
 export class SpeakerService {
-  speakers$ = new Subject<Speakers>();
-  speakersChanged = new EventEmitter<Speakers>();
+  speakers$ = new Subject<Speaker[]>();
+  speakersChanged = new EventEmitter<Speaker[]>();
 
   private speakers: Speakers = {};
+  private speakersList: Speaker[];
 
   private speakersDBUrl = environment.firebase.databaseURL + '/speakers.json';
 
@@ -25,9 +26,10 @@ export class SpeakerService {
 
   putSpeakers(speakers:Speakers) {
     this.http.put(this.speakersDBUrl, speakers)
-      .subscribe(response  => {
-        console.log('Update all speakers Response: ', response);
-        this.speakersChanged.emit({...this.speakers});
+      .subscribe((speakers: Speakers)  => {
+        console.log('Update all speakers Response: ', speakers);
+        //this.speakersChanged.emit({...this.speakers});
+        this.setSpeakers(speakers);
       });
   }
 
@@ -36,15 +38,14 @@ export class SpeakerService {
     this.speakers[speaker.id] = speaker;
 
     this.http.put(this.speakersDBUrl, this.speakers)
-    .subscribe(response  => {
-      console.log('Update one speaker Response: ', response);
-      this.speakersChanged.emit({...this.speakers});
+    .subscribe((speakers: Speakers)  => {
+      console.log('Update one speaker Response: ', speakers);
+      //this.speakersChanged.emit({...this.speakers});
+      this.setSpeakers(speakers);
     });
   }
 
   postSpeaker(speaker: Speaker) {
-
-
     this.http.post(this.speakersDBUrl, speaker)
       .pipe(
         tap(data => console.log(data))
@@ -56,13 +57,9 @@ export class SpeakerService {
         this.speakers[newSpeaker.id] = newSpeaker;
 
         this.putSpeaker(newSpeaker);
+        this.setSpeakers(this.speakers);
 
-        this.speakersChanged.emit(this.speakers);
       });
-  }
-
-  updateSpeaker(speaker: Speaker) {
-    //firebase.database().ref('users/' + userId).set(
   }
 
   fetchSpeakers() {
@@ -70,19 +67,19 @@ export class SpeakerService {
       .pipe(
         tap(speakers => {
           this.setSpeakers(speakers);
-          this.speakersChanged.emit({...this.speakers});
         })
       );
   }
 
-  getSpeakers():any {
-    return this.speakers;
+  getSpeakers():Speaker[] {
+    return Object.keys(this.speakers).map((speakerId) => this.speakers[speakerId]);
   }
 
-  setSpeakers(speakers:Speakers) {
+  setSpeakers(speakers: Speakers) {
     this.speakers = speakers;
-    this.speakers$.next(this.speakers);
-    this.speakersChanged.emit({...this.speakers});
+    this.speakersList = this.getSpeakers();
+    this.speakers$.next(this.speakersList);
+    this.speakersChanged.emit(this.speakersList);
   }
 
   getSpeaker(id: string) {

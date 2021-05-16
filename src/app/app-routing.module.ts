@@ -32,7 +32,7 @@ const routes: Routes = [
       {
         path: 'list',
         component: SpeakerListComponent,
-        resolve: [ SpeakerResolverService ]
+        resolve: { speakers: SpeakerResolverService }
       },
       {
         path: 'create',

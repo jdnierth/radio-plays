@@ -1,19 +1,35 @@
 .speaker-table {
   border: 1px solid #efefef;
-  height: 220px;
+  height: 150px;
   overflow: auto;
-  width: 100%;
+
+  table {
+    position: relative;
+    top: 0;
+    //border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    background-color: #efefef;
+  }
+
+  tr {
+    td {
+      border-bottom: 1px solid #efefef;
+    }
+  }
+
+  .speaker-edit-row {
+    td {
+      border: 0;
+    }
+  }
 }
 
-.mat-header-row {
-  background-color: #efefef;
-  border-bottom-color: rgba(0,0,0,.12);
-}
-
-.mat-header-row,
-.mat-row {
-  //padding: 2px 5px;
-  //justify-content: space-between;
+.custom-table {
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .speaker-edit-row {
@@ -25,7 +41,8 @@
 }
 
 .mat-table-sticky {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
