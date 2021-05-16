@@ -1,14 +1,14 @@
 <div class="speaker-table">
-<table class="custom-table" mat-table [dataSource]="speakerList" multiTemplateDataRows>
+<table mat-table [dataSource]="speakerList" multiTemplateDataRows>
 
-  <ng-container matColumnDef="Firstname" sticky=true>
+  <ng-container matColumnDef="Firstname">
     <th *matHeaderCellDef>Firstname</th>
     <td
       *matCellDef="let speaker">{{ speaker.firstname }}
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="Lastname" sticky=true>
+  <ng-container matColumnDef="Lastname" >
     <th *matHeaderCellDef>Lastname</th>
     <td
       *matCellDef="let speaker">{{speaker.lastname}}
@@ -17,9 +17,11 @@
 
   <ng-container matColumnDef="Action">
     <th *matHeaderCellDef class="description-cell">Action</th>
-    <td  *matCellDef="let element" class="description-cell">
-      <a (click)="expandedElement = expandedElement === element ? null : element">Edit</a> |
-      <a (click)="actionOnRow('Delete',element, $event)">Delete</a>
+    <td *matCellDef="let element" class="description-cell">
+      <div>
+        <a (click)="expandedElement = expandedElement === element ? null : element">Edit</a> |
+        <a (click)="actionOnRow('Delete',element, $event)">Delete</a>
+      </div>
     </td>
   </ng-container>
 
