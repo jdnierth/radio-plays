@@ -19,35 +19,35 @@ export const speakerFixture:Speakers = {
     },
   "-MZ3dAbe2GX5g8iQMMl5": {
       id: "-MZ3dAbe2GX5g8iQMMl5",
-      firstname: 'Bert',
-      lastname: 'Bart',
+      firstname: 'Gustav',
+      lastname: 'Friedrich',
       aliases: [
-        {name: "B. Bart"},
-        {name: "B. Barti"},
+        {name: "G. Friedrich"},
+        {name: "G. Friedrich"},
       ]
     },
   "-MZ3eAbC2GX5g8idMMl3": {
       id: "-MZ3eAbC2GX5g8idMMl3",
-      firstname: 'Hansi',
-      lastname: 'Gaetsch',
+      firstname: 'Maria',
+      lastname: 'Adorf',
       aliases: [
-        {name: "H. Gaetsch"}
+        {name: "M. Adorf"}
       ]
     },
   "-DZ3dAbC2Gsdg8iQMMl3": {
       id: "-DZ3dAbC2Gsdg8iQMMl3",
-      firstname: 'Hanse',
-      lastname: 'Paetsche',
+      firstname: 'Georg',
+      lastname: 'Töffel',
       aliases: [
-        {name: "H. Paetsche"}
+        {name: "G. Töffel"}
       ]
     },
   "-MZ3dAbC2GXeg8iQgMl3": {
       id: "-MZ3dAbC2GXeg8iQgMl3",
-      firstname: 'Hans',
-      lastname: 'Paetsch',
+      firstname: 'klaus',
+      lastname: 'Miedel',
       aliases: [
-        {name: "H. Paetsch"}
+        {name: "K. Miedel"}
       ]
     }
 }
